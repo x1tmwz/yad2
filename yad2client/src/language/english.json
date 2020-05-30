@@ -1,0 +1,237 @@
+{
+    "homePage": "Home Page",
+    "info": "user:admin password:123456",
+    "header": {
+        "homePage": "Home Page",
+        "realEstatePage": "Real estate",
+        "newAdPage": "New ad",
+        "personalSpace": "Personal space",
+        "logout": "Logout"
+    },
+    "filter": {
+        "sortBy": "Sort by",
+        "sortOptions": {
+            "date": "Date",
+            "lowToHigh": "From low price to high",
+            "hightToLow": "From high price to low"
+        },
+        "withPicture": "With picture",
+        "withTagPrice": "With tag price"
+    },
+    "editPage": {
+        "h1": "Edit your ad"
+    },
+    "newAdPage": {
+        "h1": "New ad"
+    },
+    "personalSpace": {
+        "h1": "Welcome to personal space"
+    },
+    "loginPage": {
+        "user": "User name",
+        "password": "Password",
+        "login": "Login"
+    },
+    "contact": {
+        "phone": "Phone*",
+        "contact": "Contact name*"
+    },
+    "location": {
+        "city": "City",
+        "street": "Street"
+    },
+    "from": "From",
+    "to": "To",
+    "advanceSearch": "Advance search",
+    "search": "Search",
+    "salePage": "Real estate for sale",
+    "rentPage": "Rent real estate",
+    "ad": {
+        "room": "Rooms in house",
+        "floor": "House floor",
+        "totalSize": "Total house size",
+        "update": "Last update",
+        "contact": "Contact details",
+        "description": "Asset desctiption",
+        "enterDay": "Entery day:",
+        "houseStatus": "House status:",
+        "gardenSize": "Garden size:",
+        "houseSize": "House size:",
+        "floorsInBulding": "Floors in bulding:",
+        "apartmentProperties": "Apartment properties:"
+    },
+    "form": {
+        "error": {
+            "assetTypeError": "Please enter asset type",
+            "assetStatusError": "Please enter asset status",
+            "cityError": "Please enter city name",
+            "streetError": "Please enter street name",
+            "floorError": "Please enter a building does not make sense that your floor will be larger than the total floors",
+            "roomError": "Please enter amount of rooms in the asset",
+            "houseSizeError": "Please enter the bulid house size",
+            "priceError": "If you enter a price the minimum is 100,000",
+            "phoneNumberError": "Please enter phone number",
+            "contactError": "Please enter contact name"
+        },
+        "fields": {
+            "assetType": "Asset type *",
+            "assetStatus": "Asset Status*",
+            "city": "City*",
+            "street": "Street*",
+            "floor": "Floor",
+            "floorsInBulding": "Floors in the Bulding",
+            "houseIsntInBulding": "House of land",
+            "rooms": "Rooms*",
+            "description": "Asset desctiption",
+            "houseSize":"House size*",
+            "size":"Size",
+            "priceHolder":"minimum price 100,000",
+            "datePicker":"Date *",
+            "img1":"Image 1",
+            "img2":"Image 2",
+            "img3":"Image 3",
+            "contact":"Contact details*"
+        },
+        "submit":"Submit"
+    },
+    "realEstate": {
+        "assetType": {
+            "label": "Asset type",
+            "defaultValue": "What assets",
+            "assets": [
+                "Apartment",
+                "Garden apartment",
+                "Cottage",
+                "Penthouse",
+                "Fields",
+                "Duplex"
+            ]
+        },
+        "assetStatus": {
+            "label": "Asset status",
+            "defaultValue": "Chose status of asset ",
+            "options": [
+                "New",
+                "Renovated",
+                "Need renovated"
+            ]
+        },
+        "rooms": {
+            "label": "Amount of rooms",
+            "defaultValue": "Chose amount of rooms",
+            "roomsNames": [
+                "1",
+                "1.5",
+                "2",
+                "2.5",
+                "3",
+                "3.5",
+                "4",
+                "4.5",
+                "5",
+                "5.5",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "8.5",
+                "9",
+                "9.5",
+                "10",
+                "10.5",
+                "11",
+                "11.5",
+                "12"
+            ]
+        },
+        "price": {
+            "label": "Price in dollars",
+            "placeHolder": "Price"
+        },
+        "priceRange": "Price range",
+        "apartmentProperties": {
+            "label": "Apartment properties",
+            "properties": [
+                "Pandora doors",
+                "parking",
+                "Elevators",
+                "Air conditioning",
+                "Terrace",
+                "dimension",
+                "bars",
+                "Storage",
+                "Access for disabled",
+                "Refurbished",
+                "Furnished",
+                "Exclusively"
+            ]
+        },
+        "floor": {
+            "label": "Floors",
+            "defaultValue": "Floor",
+            "floors": [
+                "All",
+                "Basement",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17"
+            ]
+        },
+        "houseSize": "House size",
+        "gradenSize": "Graden Size",
+        "parking": {
+            "label": "Parking"
+        },
+        "balcony": {
+            "label": "Balcony"
+        },
+        "size": {
+            "label": "Size",
+            "placeHolder": "Size"
+        },
+        "dayOfEnter": {
+            "label": "Date of entry",
+            "placeHolder": "from- date"
+        },
+        "ImmediateEntrance": "Immediate entrance",
+        "components": {
+            "realEstateNavBar": {
+                "sale": "Sale page",
+                "rent": "Rent page"
+            },
+            "realEstateAd": {
+                "title": "Add new Asset"
+            },
+            "realEstateAdForm": {
+                "assets": {
+                    "button": "Type of assets"
+                },
+                "rooms": {
+                    "button": "rooms"
+                },
+                "floor": {
+                    "placeHolder": "Floor number",
+                    "howMuchFloors": "How much floors in bullding"
+                }
+            },
+            "searchBar": {}
+        }
+    },
+    "NotFoundPage": "This page isnt existent,status 404"
+}

@@ -1,0 +1,241 @@
+{
+    "homePage": "דף הבית",
+    "info": "משתמש:admin סיסמה:123456",
+    "header": {
+        "homePage": "דף נבית",
+        "realEstatePage": "נדל''ן",
+        "newAdPage": "מודעה חדשה",
+        "personalSpace": "איזור אישי",
+        "logout": "התנתק"
+    },
+    "filter": {
+        "sortBy": "מיין לפי",
+        "sortOptions": {
+            "date": "תאריך",
+            "lowToHigh": "מהמחיר הנמוך לגובה",
+            "hightToLow": "מהמחיר הגבוה לנמוך"
+        },
+        "withPicture": "עם תמונות",
+        "withTagPrice": "עם תג מחיר"
+    },
+    "editPage": {
+        "h1": "ערוך את המודעה"
+    },
+    "newAdPage": {
+        "h1": "מודעה חדשה"
+    },
+    "personalSpace": {
+        "h1": "ברוך הבא לאיזור האישי",
+        "edit":"ערוך",
+        "delet":"מחק"
+
+    },
+    "loginPage": {
+        "user": "משתמש",
+        "password": "סיסמה",
+        "login": "היתחבר",
+        "error":{
+            "valuesMissing":"נא להזין משתמש וסיסמה",
+            "wrongUserValues":"שם המשתמש או הסיסמה אינם נכונים"
+        }
+
+    },
+    "contact": {
+        "phone": "טלפון*",
+        "contact": "שם איש קשר*"
+    },
+    "location": {
+        "city": "עיר",
+        "street": "רחוב"
+    },
+    "from": "-מ",
+    "to": "-ל",
+    "advanceSearch":"אפשריות מתקדמות",
+    "search":"חיפוש",
+    "salePage": "נדל''ן למכירה",
+    "rentPage": "נדל''ן להשכרה",
+    "ad": {
+        "room":"חדרים",
+        "floor": "קומה",
+        "totalSize": "מ''ר",
+        "noPriceTag":"לא צוין מחיר",
+        "update": "עודכן",
+        "contact": "פרטי התיקשרות",
+        "description": "תיאור נכס",
+        "enterDay": "תאריך כניסה:",
+        "houseStatus": "מצב הבית:",
+        "gardenSize": "גודל גינה:",
+        "houseSize": "גודל שטח בנוי:",
+        "floorsInBulding": "קומות בבניין:",
+        "apartmentProperties": "דברים שיש בנכס"
+    },
+    "form": {
+        "error": {
+            "assetTypeError": " בבקשה תכניס סוג של נכס",
+            "assetStatusError": "בבקשה תכניס מצב נכס",
+            "cityError": "בבקשה תכניס שם של עיר",
+            "streetError": "בבקשה תכניס שם של רחוב",
+            "floorError": "בבקשה תכניס את סהכ הקומות בבניין לא הגיוני שמספר הקומה שלך יהיה יותר גדול ממספר הקומות",
+            "roomError": "בבקשה תכניס כמות חדרים",
+            "houseSizeError": "בבקשה תכניס גודל הבית הבנוי",
+            "priceError": "אם הכנסתה מחיר המינימום הוא 100,000 שקל",
+            "phoneNumberError": "בבקשה תכניס מספר טלפון",
+            "contactError": "בבקשה תכניס שם של איש קשר"
+        },
+        "fields": {
+            "assetType": "סוג נכס*",
+            "assetStatus": "מצב נכס*",
+            "statusHolder":"מצב..",
+            "city": "עיר*",
+            "street": "רחוב*",
+            "floor": "קומה",
+            "floorsInBulding": "קומות בבניין",
+            "houseIsntInBulding": "בית קרקע",
+            "rooms": "חדרים*",
+            "description": "תיאור נכס",
+            "houseSize":"גודל בית בנוי*",
+            "size":"גודל במ''ר",
+            "priceHolder":"מינימום 100,000 שקל",
+            "datePicker":"תאריך",
+            "img1":"תמונה 1",
+            "img2":"תמונה 2",
+            "img3":"תמונה 3",
+            "contact":"פרטי התקשרות*"
+        },
+        "submit":"שלח"
+    },
+    "realEstate": {
+        "assetType": {
+            "label": "סוג נכס",
+            "defaultValue": "איזה נכס..",
+            "assets": [
+                "דירה",
+                "דירת גן",
+                "קוט'ג",
+                "פנטאוז",
+                "מגרשים",
+                "דו-קומתי"
+            ]
+        },
+        "assetStatus": {
+            "label": "מצב נכס",
+            "defaultValue": "בחר מצב ",
+            "options": [
+                "חדש",
+                "משופץ",
+                "צריך שיפוץ"
+            ]
+        },
+        "rooms": {
+            "label": "כמות חדרים",
+            "defaultValue":"תבחר כמות",
+            "roomsNames": [
+                "1",
+                "1.5",
+                "2",
+                "2.5",
+                "3",
+                "3.5",
+                "4",
+                "4.5",
+                "5",
+                "5.5",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "8.5",
+                "9",
+                "9.5",
+                "10",
+                "10.5",
+                "11",
+                "11.5",
+                "12"
+            ]
+        },
+        "price": {
+            "label": "מחיר בשקלים",
+            "placeHolder": "מחיר"
+        },
+        "priceRange": "טווח מחירים",
+        "apartmentProperties": {
+            "label": "דברים בנכס",
+            "properties": [
+                "דלות פנדור",
+                "חניה",
+                "מעלית",
+                "מזגן",
+                "מדרגות",
+                "ממד",
+                "סורגים",
+                "מחסן",
+                "גישה לאנשים בעלי מוגבליות",
+                "משופצת",
+                "מרוהטת",
+                "אקסלוסיבית"
+            ]
+        },
+        "floor": {
+            "label": "קומות",
+            "defaultValue": "קומה",
+            "floors": [
+                "הכל",
+                "מרתף",
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17"
+            ]
+        },
+        "houseSize": "גודל שטח בנוי",
+        "gradenSize": "גודל גינה",
+        "size": {
+            "label": "גודל",
+            "placeHolder": "גודל"
+        },
+        "dayOfEnter": {
+            "label": "תאריך כניסה",
+            "placeHolder": "מתאריך"
+        },
+        "ImmediateEntrance": "כניסה מיידית",
+        "components": {
+            "realEstateNavBar": {
+                "sale": "מכירה",
+                "rent": "השכרה"
+            },
+            "realEstateAd": {
+                "title": "הוסף נכס חדש"
+            },
+            "realEstateAdForm": {
+                "assets": {
+                    "button": "סוג של נכס"
+                },
+                "rooms": {
+                    "button": "חדרים"
+                },
+                "floor": {
+                    "placeHolder": "קומה",
+                    "howMuchFloors": "מספר רומות בבניין"
+                }
+            },
+            "searchBar": {}
+        }
+    },
+    "NotFoundPage": "סליחה הייתה בעיה ,סטאטוס 404"
+}
