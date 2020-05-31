@@ -18,12 +18,12 @@ const ImageViewer = (props) => {
     }
 
     return (
-        <div className='d-flex flex-column'>
-            <img src={props.images[index]} className="img-fluid" alt="" />
+        <div className="imageContanierBlock">
+                <img src={props.images[index]} className="imageSize" alt="" />
             {props.images.length > 1 && (
                 <div className="d-flex justify-content-center">
-                    <button onClick={rightClickHandler} type="button" className="p-0" style={{whiteSpace: "normal",border: "none"}} >➡</button>
-                    <button onClick={leftClickHandler} type="button" className="p-0" style={{whiteSpace: "normal",border: "none"}} >⬅</button>
+                    <button onClick={rightClickHandler} type="button" className="p-0" style={{ whiteSpace: "normal", border: "none" }} >➡</button>
+                    <button onClick={leftClickHandler} type="button" className="p-0" style={{ whiteSpace: "normal", border: "none" }} >⬅</button>
                 </div>)}
         </div>
     );

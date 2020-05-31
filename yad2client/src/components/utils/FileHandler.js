@@ -13,7 +13,7 @@ const FileHandler = (props) => {
     const imageHandler = (e) => {
         const file = e.target.files[0];
         const regEx = /^image\/(png|jpeg)$/;
-        if (!!file && file.type.match(regEx) && file.size <= 100000) {
+        if (!!file && file.type.match(regEx) && file.size <= 1000000) {
             const reader = new FileReader();
             reader.onloadend = () => {
                 if (props.setImage) {
@@ -30,8 +30,8 @@ const FileHandler = (props) => {
     return (
         <div>
             <input onChange={imageHandler} type='file' accept="image/*" placeholder='Image' name='image' />
-            <div>
-                <img src={props.file ? fromBufferToImage(props.file) : ""} alt="" />
+            <div className="imageContanier">
+                <img src={props.file ? fromBufferToImage(props.file) : ""} alt="" className="imageSize"/>
             </div>
         </div>
 

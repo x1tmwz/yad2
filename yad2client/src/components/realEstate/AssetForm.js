@@ -112,6 +112,7 @@ const AssetsForm = (props) => {
             || (!!price && price < 100000) || !data || !phoneNumber || !contact || !assetStatus) {
             return;
         }
+        console.log(apartmentProperties);
         if (props.submit) {
             props.submit({
                 assetType,
@@ -206,7 +207,7 @@ const AssetsForm = (props) => {
                 <CustomError error={floorError} />
 
 
-                <div className="d-flex justify-content-between">
+                <div className="flexResponsive">
                     <div className="ml-5">
                         <h4>{language.realEstate.apartmentProperties.label}</h4>
                         <CheckBoxList
@@ -225,8 +226,8 @@ const AssetsForm = (props) => {
                     </div>
 
                 </div>
-                <div>
-                    <div className="d-flex flex-row">
+                <div className="flexResponsive">
+                    <div className="flexResponsive mr-5">
                         <div className="mr-5">
                             <CustomField
                                 label={language.form.fields.houseSize}
@@ -264,7 +265,7 @@ const AssetsForm = (props) => {
                             />
                         </div>
                     </div>
-                    <div className="d-flex flex-row">
+                    <div className="flexResponsive">
                         <div className="mr-5">
                             <CustomField
                                 label={language.realEstate.price.label}
@@ -305,13 +306,6 @@ const AssetsForm = (props) => {
 
                 </div>
 
-
-
-
-
-
-
-
                 <DatePicker
                     label={language.form.fields.datePicker}
                     placeHolder={language.realEstate.dayOfEnter.placeHolder}
@@ -320,7 +314,7 @@ const AssetsForm = (props) => {
                     date={date}
                     required={true}
                 />
-                <div className="row justify-content-between">
+                <div className="flexResponsive">
                     <div>
                         <h4>{language.form.fields.img1}</h4>
                         <FileHandler
@@ -342,7 +336,6 @@ const AssetsForm = (props) => {
                             file={image3}
                             setImage={setImage3}
                         />
-
                     </div>
 
                 </div>

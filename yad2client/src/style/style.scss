@@ -1,9 +1,4 @@
-input{
-  text-align: right;
-}
-select{
-  text-align: right;
-}
-html{
-  text-align: right;
-}
+@import './base/settings.scss';
+@import './components/ad.scss';
+@import './components/image.scss';
+@import './components/flexResponsive'

@@ -6,7 +6,6 @@ const userRouter = require('./routers/user');
 const adRouter = require('./routers/ad');
 const cors =require('cors');
 const publicPath = path.join(__dirname, '../yad2client','build');
-console.log(publicPath)
 const app = express();
 app.use(express.static(publicPath));
 app.use(cors());

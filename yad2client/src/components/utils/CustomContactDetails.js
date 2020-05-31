@@ -22,7 +22,7 @@ const CustomContactDetails = (props) => {
     }
 
     return (
-        <div className="d-flex">
+        <div className="flexResponsive">
             <CustomField
                 label={langauge.contact.phone}
                 component={

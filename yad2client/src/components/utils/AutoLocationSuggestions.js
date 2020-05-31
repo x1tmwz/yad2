@@ -81,7 +81,7 @@ const AutoLocationSuggestions = (props) => {
     }, [street, city, props])
 
     return (
-        <div className="d-flex flex-row">
+        <div className="flexResponsive">
             <div onBlur={blurHandler}>
                 <label>{props.cityLabel}</label>
                 <input

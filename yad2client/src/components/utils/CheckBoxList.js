@@ -8,8 +8,8 @@ const CheckBoxList = (props) => {
             const boxArray = Array.from(box.childNodes);
             const checkOptions = [];
             boxArray.forEach(label => {
-                if (label.lastChild.checked) {
-                    return checkOptions.push(label.lastChild.value)
+                if (label.firstChild.checked) {
+                    return checkOptions.push(label.firstChild.value)
                 }
                 return label;
             })

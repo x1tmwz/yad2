@@ -23,7 +23,7 @@ const InputFromTo = (props) => {
         }
     }
     return (
-        <div>
+        <div className="flexResponsive">
 
             <label>{props.fromLabel}</label>
             <input

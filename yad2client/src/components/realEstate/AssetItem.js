@@ -43,10 +43,10 @@ const AssetItem = ({
 
 
         <div
-            className="d-flex flex-column border border-dark pr-1 pl-1 pb-1 pt-1 mb-4 w-100"
+            className="d-flex flex-column border border-dark pr-1 pl-1 pb-1 pt-1 w-100"
             style={{ background: 'linear-gradient(0deg, rgba(239,250,255,1) 0%, rgba(255,71,71,1) 100%)' }}
         >
-            <div onClick={openAdHanlder} className="d-flex justify-content-between">
+            <div onClick={openAdHanlder} className="flexResponsive justify-content-between align-items-center">
                 <ImageViewer
                     images={imageArray([image1, image2, image3])}
                 />
@@ -75,7 +75,7 @@ const AssetItem = ({
             </div>
             {isOpen && (
                 <div className="d-flex flex-column">
-                    <div className="d-flex justify-content-between">
+                    <div className="flexResponsive justify-content-between">
                         <div>
                             <p><span>{language.ad.enterDay}</span>{`${new moment(date).format("DD-MM-YYYY")}`}</p>
                             <p><span>{language.ad.houseStatus}</span>{transleValues(assetStatus, data.realEstate.assetStatus, language.realEstate.assetStatus.options)}</p>
@@ -88,9 +88,9 @@ const AssetItem = ({
                             <p style={{ wordBreak: "break-all" }}>{description}</p>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-between">
+                    <div className="flexResponsive justify-content-between">
                         {apartmentProperties.length > 0 && (
-                            <div>
+                            <div className="mb-5">
                                 <h5>{language.ad.apartmentProperties}</h5>
                                 <div>
                                     {apartmentProperties.map((prop) =>
