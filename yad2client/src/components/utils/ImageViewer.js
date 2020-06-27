@@ -19,12 +19,12 @@ const ImageViewer = (props) => {
 
     return (
         <div className="imageContanierBlock">
-                <img src={props.images[index]} className="imageSize" alt="" />
-            {props.images.length > 1 && (
+                <img src={props.images.length> 0 ? props.images[index]:"https://yad2pic.s3-eu-west-1.amazonaws.com/defaultImage.jpg"} className="imageSize" alt="" />
+            {/* {props.images.length > 1 && (
                 <div className="d-flex justify-content-center">
                     <button onClick={rightClickHandler} type="button" className="p-0" style={{ whiteSpace: "normal", border: "none" }} >➡</button>
                     <button onClick={leftClickHandler} type="button" className="p-0" style={{ whiteSpace: "normal", border: "none" }} >⬅</button>
-                </div>)}
+                </div>)} */}
         </div>
     );
 

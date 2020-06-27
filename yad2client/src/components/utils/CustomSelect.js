@@ -9,7 +9,7 @@ const CustomSelect = (props) => {
     }
     return (
         <div>
-            <select onChange={setOptionHandler} name={props.name} defaultValue={props.defaultOption}>
+            <select onChange={setOptionHandler} name={props.name} defaultValue={props.defaultOption} className={props.className}>
                 <option defaultValue={""} disabled>{props.defaultOption}</option>
                 {props.all && <option value="">{props.all}</option>}
                 {props.options.map((asset, index) => {

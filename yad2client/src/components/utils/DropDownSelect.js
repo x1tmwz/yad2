@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-const DropDown = (props) => {
+const DropDownSelect = (props) => {
     const [isOpen, setOpen] = useState(false);
 
     const dropDownHandler = () => {
@@ -12,7 +12,10 @@ const DropDown = (props) => {
         <div>
             <div className="d-flex flex-column">
                 <label className="mr-5 ml-5">{props.label}</label>
-                <button onClick={dropDownHandler} type="button" className={props.buttonClassName} >{props.buttonPlaceHolder}</button>
+                <div onClick={dropDownHandler} className="d-flex flex-row">
+                    <input className={props.inputClassName} placeholder={props.defaultOption}  disabled/>
+                    <button className={props.buttonClassName}>˅</button>
+                </div>
             </div>
             <div>
                 {isOpen && props.component}
@@ -20,4 +23,4 @@ const DropDown = (props) => {
         </div>
     );
 }
-export default DropDown;
+export default DropDownSelect;

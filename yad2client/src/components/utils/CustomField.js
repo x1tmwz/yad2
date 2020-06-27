@@ -4,9 +4,8 @@ const CustomField = (props) => {
     
     return (
         <div className="form-group">
-            <label className="ml-1">{props.label}</label>
+            <label className={props.labelClassName} >{props.label}</label>
             {props.component}
-            
         </div>
     );
 }

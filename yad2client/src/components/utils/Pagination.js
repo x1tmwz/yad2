@@ -12,7 +12,7 @@ const Pagination = ({ adsPerPage, totalAds, paginate }) => {
     }
 
     return (
-        <nav className="d-flex flex-row-reverse">
+        <nav className="d-flex flex-row-reverse mt-5 mb-5">
             {pageNumber.map(number => (
                 <button key={number} value={number} onClick={clickHandler}>{number}</button>
             ))}

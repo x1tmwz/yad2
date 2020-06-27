@@ -46,27 +46,29 @@ const DatePicker = (props) => {
 
 
     return (
-        <div className="d-flex flex-row align-items-center justify-content-center">
-
+        <div className="d-flex flex-column ml-5">
             <label>{props.label}</label>
-            <SingleDatePicker
-                date={date}
-                onDateChange={onDateChange}
-                placeholder={props.placeHolder}
-                focused={calendarFocused}
-                onFocusChange={onFocusChange}
-                numberOfMonths={1}
-                displayFormat={"DD/MM/YYYY"}
-                required={props.required}
-                anchorDirection="right"
-                showDefaultInputIcon
-                isRTL
-            />
-            <input type="checkbox" onChange={clickHandler} checked={isCheck} />
-            <label>{props.todayCheckBoxTitle}</label>
-            {props.clearDateButton && <button onClick={clearDateHandler} className="btn btn-success mr-2 ml-2" type="button">נקה תאריך</button>}
+            <div className="flexResponsive">
+                <SingleDatePicker
+                    date={date}
+                    onDateChange={onDateChange}
+                    placeholder={props.placeHolder}
+                    focused={calendarFocused}
+                    onFocusChange={onFocusChange}
+                    numberOfMonths={1}
+                    displayFormat={"DD/MM/YYYY"}
+                    required={props.required}
+                    anchorDirection="right"
+                    showDefaultInputIcon
+                    isRTL
+                />
+                <div className="ml-4">
+                    <input type="checkbox" onChange={clickHandler} checked={isCheck}  />
+                    <label>{props.todayCheckBoxTitle}</label>
+                </div>
 
-
+                {props.clearDateButton && <button onClick={clearDateHandler} className="btn btn-success buttonSize-xl mr-2 ml-2" type="button">נקה תאריך</button>}
+            </div>
         </div>
     );
 }

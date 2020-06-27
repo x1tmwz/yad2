@@ -9,13 +9,14 @@ import AddNewAdPage from '../components/AddNewAdPage'
 import LoginPage from '../components/LoginPage';
 import PersonalSpace from '../components/PersonalSpace';
 import EditAdPage from '../components/EditAdPage';
+import Footer from '../components/Footer';
 
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Header />
-            <div className="container">
+            <div className="greyBackground main">
                 <Switch>
                     <Route path='/' component={HomePage} exact={true} />
                     <Route path='/RealEstate/sale' component={RealEstateRouter} />
@@ -26,6 +27,7 @@ const AppRouter = () => {
                     <Route path='*' component={NotFoundPage} />
                 </Switch>
             </div>
+            <Footer />
         </BrowserRouter>
     );
 

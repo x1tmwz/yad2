@@ -86,12 +86,12 @@ const AutoLocationSuggestions = (props) => {
                 <label>{props.cityLabel}</label>
                 <input
                     list="city"
-                    placeholder={props.cityLabel}
+                    placeholder={props.cityPlaceHolder}
                     onChange={cityHandler}
                     value={city}
                     name="city"
                     required={props.required}
-                    className="mr-1 ml-1"
+                    className="customInput-l"
                 />
                 <datalist id="city">
                     {getCitySuggestions(city).map((city) =>
@@ -113,6 +113,7 @@ const AutoLocationSuggestions = (props) => {
                         name="street"
                         required={props.required}
                         disabled={!!!props.city}
+                        className="customInput-l"
                     />
                     <datalist id="street">
                         {getStreetSuggestions(city, street).map((str) =>

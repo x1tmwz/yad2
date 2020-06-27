@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const MiniNav = (props) => {
+    
 
     return (
-        <div className="navbar navbar-light">
+        <div className="navbar navbar-light mb-5 shadowBoxContainer-s pl-5">
             <div>
                 {props.links.map((link) => {
-                    return <Link className="navbar-brand" to={link.path} key={link.name}>{link.name}</Link>
+                    return <NavLink className="navbar-brand" to={link.path} key={link.name} activeClassName="activeLink"><span>{link.name}</span></NavLink>
                 })}
             </div>
             <div></div>

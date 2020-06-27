@@ -33,6 +33,7 @@ const InputFromTo = (props) => {
                 min={0}
                 onChange={fromChangeHandler}
                 value={props.fromValue === 0 ? "" : props.fromValue}
+                className={props.classNameFrom}
             />
             <label>{props.toLabel}</label>
             <input
@@ -42,6 +43,7 @@ const InputFromTo = (props) => {
                 min={props.fromValue}
                 onChange={toChangeHandler}
                 value={props.toValue === 0 ? "" : props.toValue}
+                className={props.classNameTo}
             />
 
         </div>

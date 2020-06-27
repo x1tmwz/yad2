@@ -9,6 +9,7 @@ import CustomSelect from '../utils/CustomSelect';
 import AutoLocationSuggestions from '../utils/AutoLocationSuggestions';
 import SelectFromTo from '../utils/SelectFromTo';
 import DropDown from '../utils/DropDown';
+import DropDownSelect from '../utils/DropDownSelect';
 import CheckBoxList from '../utils/CheckBoxList';
 import DatePicker from '../utils/DatePicker';
 import errorHandler from '../../utils/statusHandler';
@@ -22,6 +23,8 @@ const customHandler = (setter) => {
 }
 
 const SearchBar = ({ startSetAllMatchAds, limit, startSetAdvanceFilters }) => {
+    const [isOpen, setOpen] = useState(false);
+
     const [assetType, setAssetType] = useState("");
 
     const [city, setCity] = useState("");
@@ -42,12 +45,18 @@ const SearchBar = ({ startSetAllMatchAds, limit, startSetAdvanceFilters }) => {
     const [priceFrom, setPriceFrom] = useState(0);
     const [priceTo, setPriceTo] = useState(0);
 
+
+
     const [date, setDate] = useState("");
 
     const houseSizeFromHandler = customHandler(setHouseSizeFrom);
     const houseSizeToHandler = customHandler(setHouseSizeTo);
     const priceFromHandler = customHandler(setPriceFrom);
     const priceToHandler = customHandler(setPriceTo);
+
+    const dropDownHandler = () => {
+        setOpen(!isOpen);
+    }
     const submitHandler = async (e) => {
         e.preventDefault();
         const rangeFixer = (range) => {
@@ -96,88 +105,125 @@ const SearchBar = ({ startSetAllMatchAds, limit, startSetAdvanceFilters }) => {
     }
 
     return (
-        <form onSubmit={submitHandler} className="d-flex flex-column border border-dark pr-1 pl-1 pb-1 pt-1 mb-4">
-            <div className="d-flex justify-content-between">
-                <CustomField
-                    label={language.location.city}
-                    component={
-                        <AutoLocationSuggestions
-                            placeHolder={language.location.city}
-                            setCity={setCity}
-                            required={false}
-                            city={city}
-                            street={street}
-                            setStreet={setStreet}
-                            streetLabel={language.location.street}
-                            needStreet={false}
-                        />
-                    }
-                />
-
-
-                <CustomField
-                    label={language.realEstate.assetType.label}
-                    component={
-                        <CustomSelect
-                            name="asset"
-                            defaultOption={language.realEstate.assetType.defaultValue}
-                            options={data.realEstate.assetType.assets}
-                            optionsNames={language.realEstate.assetType.assets}
-                            getOption={setAssetType}
-                            all={"הכל"}
-                        />
-                    }
-                />
-
-            </div>
-            <button type="submit" className="btn btn-info btn-lg mb-3">{language.search}</button>
-
-
-            <DropDown
-                buttonPlaceHolder={language.advanceSearch}
-                component={
-                    <div >
-                        <DropDown
-                            buttonPlaceHolder={language.realEstate.priceRange}
-                            component={
-                                <div>
-                                    <input
-                                        type="number"
-                                        name={"price"}
-                                        placeholder={language.from}
-                                        min={0}
-                                        onChange={priceFromHandler}
-                                        value={priceFrom === 0 ? "" : priceFrom}
-                                    />
-                                    <input
-                                        type="number"
-                                        name={"price"}
-                                        placeholder={language.to}
-                                        min={priceFrom}
-                                        onChange={priceToHandler}
-                                        value={priceTo === 0 ? "" : priceTo}
-                                    />
-                                </div>}
-                        />
-                        <div>
-                            <DropDown
-                                buttonPlaceHolder={language.realEstate.apartmentProperties.label}
-                                component={
-                                    <CheckBoxList
-                                        options={data.realEstate.apartmentProperties}
-                                        optionsNames={language.realEstate.apartmentProperties.properties}
-                                        getValue={setApartmentProperties}
-                                        values={apartmentProperties}
-                                    />
-                                }
+        <div className="searchBarContainer-box shadowBoxContainer">
+            <form onSubmit={submitHandler} className="d-flex flex-column mb-5 ">
+                <div className="flexResponsive searchBarContainer">
+                    <CustomField
+                        label={language.location.city}
+                        component={
+                            <AutoLocationSuggestions
+                                placeHolder={language.location.city}
+                                cityPlaceHolder={"לדוגמה:חיפה"}
+                                setCity={setCity}
+                                required={false}
+                                city={city}
+                                street={street}
+                                setStreet={setStreet}
+                                streetLabel={language.location.street}
+                                needStreet={false}
                             />
-                        </div>
-                        <div >
+                        }
+                    />
+                    <CustomField
+                        label={language.realEstate.assetType.label}
+                        component={
+                            <CustomSelect
+                                name="asset"
+                                defaultOption={language.realEstate.assetType.defaultValue}
+                                options={data.realEstate.assetType.assets}
+                                optionsNames={language.realEstate.assetType.assets}
+                                getOption={setAssetType}
+                                all={"הכל"}
+                                className={"customSelect-m"}
+                            />
+                        }
+                    />
+                    <DropDownSelect
+                        label={language.realEstate.rooms.label}
+                        defaultOption={language.realEstate.rooms.label}
+                        inputClassName={"customInput-m mr-0"}
+                        buttonClassName={"lightButton buttonSize-s greyBorder"}
 
-                            <DropDown
-                                buttonPlaceHolder={language.realEstate.houseSize}
+                        component={
+                            <SelectFromTo
+                                name="rooms"
+                                defaultOption={language.realEstate.rooms.defaultValue}
+                                fromOption={roomFrom}
+                                toOption={roomTo}
+                                options={data.realEstate.rooms}
+                                optionsNames={language.realEstate.rooms.roomsNames}
+                                getOptionFrom={setRoomFrom}
+                                getOptionTo={setRoomTo}
+                                from={roomFrom}
+                                to={roomTo}
+                                fromLabel={language.from}
+                                toLabel={language.to}
+                                classNameFrom={"customSelect-s"}
+                                classNameTo={"customSelect-s"}
+
+                            />}
+
+                    />
+                    <CustomField
+                        label={language.realEstate.priceRange}
+                        component={
+                            <div>
+                                <input
+                                    type="number"
+                                    name={"price"}
+                                    placeholder={language.from}
+                                    min={0}
+                                    onChange={priceFromHandler}
+                                    value={priceFrom === 0 ? "" : priceFrom}
+                                    className={"customInput-s mr-0"}
+                                />
+                                <input
+                                    type="number"
+                                    name={"price"}
+                                    placeholder={language.to}
+                                    min={priceFrom}
+                                    onChange={priceToHandler}
+                                    value={priceTo === 0 ? "" : priceTo}
+                                    className={"customInput-s"}
+                                />
+                            </div>}
+                    />
+                    <div className="d-flex flex-column">
+                        <label className="mb-2"></label>
+                        <button
+                            className={"hidenButton boldText buttonSize-xl mr-3"}
+                            type="button"
+                            onClick={dropDownHandler}
+                        >
+                            {language.advanceSearch}
+                        </button>
+                    </div>
+                    <div className="d-flex flex-column">
+                        <label className="mb-0"></label>
+                        <button type="submit" className="yad2Button buttonSize-l boldButton">{language.search}</button>
+                    </div>
+                </div>
+
+
+                {isOpen && (
+                    <div className="searchBarAdvanceSearchContainer">
+                        <CustomField
+                            label={language.realEstate.apartmentProperties.label}
+                            labelClassName={"boldText"}
+                            component={
+                                <CheckBoxList
+                                    options={data.realEstate.apartmentProperties}
+                                    optionsNames={language.realEstate.apartmentProperties.properties}
+                                    getValue={setApartmentProperties}
+                                    values={apartmentProperties}
+                                />
+                            }
+                        />
+                        <div className="flexResponsive">
+                            <CustomField
+                                label={language.realEstate.houseSize}
                                 component={
-                                    <div>
+                                    <div className="mr-5">
                                         <input
                                             type="number"
                                             name="houseSize"
@@ -185,6 +231,7 @@ const SearchBar = ({ startSetAllMatchAds, limit, startSetAdvanceFilters }) => {
                                             min={0}
                                             onChange={houseSizeFromHandler}
                                             value={houseSizeFrom === 0 ? "" : houseSizeFrom}
+                                            className={"customInput-s"}
                                         />
                                         <input
                                             type="number"
@@ -193,60 +240,43 @@ const SearchBar = ({ startSetAllMatchAds, limit, startSetAdvanceFilters }) => {
                                             min={houseSizeFrom}
                                             onChange={houseSizeToHandler}
                                             value={houseSizeTo === 0 ? "" : houseSizeTo}
+                                            className={"customInput-s"}
                                         />
                                     </div>
                                 }
                             />
-
-
-                            <DropDown
-                                buttonPlaceHolder={language.realEstate.floor.label}
-                                component={
-                                    <SelectFromTo
-                                        name="floors"
-                                        defaultOption={language.realEstate.floor.defaultValue}
-                                        options={data.realEstate.floors}
-                                        optionsNames={language.realEstate.floor.floors}
-                                        getOptionFrom={setFloorFrom}
-                                        getOptionTo={setFloorTo}
-                                        from={floorFrom}
-                                        to={floorTo}
-                                        fromLabel={language.from}
-                                        toLabel={language.to}
-                                    />}
+                            <SelectFromTo
+                                name="floors"
+                                defaultOption={language.realEstate.floor.defaultValue}
+                                fromOption={floorFrom}
+                                toOption={floorTo}
+                                options={data.realEstate.floors}
+                                optionsNames={language.realEstate.floor.floors}
+                                getOptionFrom={setFloorFrom}
+                                getOptionTo={setFloorTo}
+                                from={floorFrom}
+                                to={floorTo}
+                                fromLabel={language.realEstate.floor.label + " " + language.from}
+                                toLabel={language.realEstate.floor.label + " " + language.to}
+                                classNameFrom={"customSelect-s"}
+                                classNameTo={"customSelect-s"}
                             />
-                            <DropDown
-                                buttonPlaceHolder={language.realEstate.rooms.label}
-                                component={
-                                    <SelectFromTo
-                                        name="rooms"
-                                        defaultOption={language.realEstate.rooms.defaultValue}
-                                        options={data.realEstate.rooms}
-                                        optionsNames={language.realEstate.rooms.roomsNames}
-                                        getOptionFrom={setRoomFrom}
-                                        getOptionTo={setRoomTo}
-                                        from={roomFrom}
-                                        to={roomTo}
-                                        fromLabel={language.from}
-                                        toLabel={language.to}
-                                    />}
-
+                            <DatePicker
+                                label={language.realEstate.dayOfEnter.label}
+                                placeHolder={language.realEstate.dayOfEnter.placeHolder}
+                                todayCheckBoxTitle={language.realEstate.ImmediateEntrance}
+                                getDate={setDate}
+                                date={date}
+                                required={false}
+                                clearDateButton={true}
                             />
                         </div>
-                        <DatePicker
-                            label={language.realEstate.dayOfEnter.label}
-                            placeHolder={language.realEstate.dayOfEnter.placeHolder}
-                            todayCheckBoxTitle={language.realEstate.ImmediateEntrance}
-                            getDate={setDate}
-                            date={date}
-                            required={false}
-                            clearDateButton={true}
-                        />
-                    </div>
-                }
-            />
 
-        </form>
+                    </div>
+                )}
+            </form>
+        </div>
+
 
     )
 

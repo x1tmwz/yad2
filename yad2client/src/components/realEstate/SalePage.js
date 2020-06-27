@@ -51,7 +51,7 @@ const SalePage = ({ filterAds, startSetAllAds, advanceFilters, startSetAllMatchA
     const paginate = (pageNumber) => setCurrentPage(pageNumber)
     return (
         <div className="d-flex flex-column align-items-center">
-            <h1>{language.salePage}</h1>
+            {/* <h1>{language.salePage}</h1> */}
             <SearchBar limit={limit} />
             <Filter />
             {loading ? <p>Loading...</p> : currentAds.map((asset) => <AssetItem {...asset} key={asset._id} />)}

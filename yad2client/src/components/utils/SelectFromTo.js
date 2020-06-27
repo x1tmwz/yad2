@@ -10,17 +10,19 @@ const SelectFromTo = (props) => {
         }
         return 0;
     }
+   
     return (
-        <div className="d-flex flex-column">
+        <div className="flexResponsive abs">
             <CustomField
                 label={props.fromLabel}
                 component={
                     <CustomSelect
                         name={props.name}
-                        defaultOption={props.defaultOption}
+                        defaultOption={props.fromOption === 0 ?props.defaultOption:props.fromOption}
                         options={props.options}
                         optionsNames={props.optionsNames}
                         getOption={props.getOptionFrom}
+                        className={props.classNameFrom}
                     />
                 }
             />
@@ -29,10 +31,11 @@ const SelectFromTo = (props) => {
                 component={
                     <CustomSelect
                         name={props.name}
-                        defaultOption={props.defaultOption}
+                        defaultOption={props.toOption === 0 ?props.defaultOption:props.toOption}
                         options={props.options.slice(findFromIndex(props.from))}
                         optionsNames={props.optionsNames.slice(findFromIndex(props.from))}
                         getOption={props.getOptionTo}
+                        className={props.classNameTo}
                     />
                 }
             />

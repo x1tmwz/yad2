@@ -112,7 +112,7 @@ const AssetsForm = (props) => {
             || (!!price && price < 100000) || !data || !phoneNumber || !contact || !assetStatus) {
             return;
         }
-        console.log(apartmentProperties);
+
         if (props.submit) {
             props.submit({
                 assetType,
@@ -139,223 +139,231 @@ const AssetsForm = (props) => {
     }
 
     return (
-        <form onSubmit={submitHandler} className="border border-dark pr-1 pl-1 pb-1 pt-1 mb-4" >
-            <div className="d-flex flex-column align-items-center">
-                <div className="d-flex justify-content-between">
-                    <div>
-                        <CustomField
-                            label={language.form.fields.assetStatus}
-                            component={
-                                <CustomSelect
-                                    name="status"
-                                    defaultOption={props.assetStatus || language.form.fields.statusHolder}
-                                    options={["new", "renovated", "needRenovated"]}
-                                    optionsNames={language.realEstate.assetStatus.options}
-                                    getOption={setAssetStatus}
+        <form onSubmit={submitHandler} className="centerContainer shadowBoxContainer">
+            <div className="d-flex flex-column">
+                <div className="flexResponsive spredContainer">
+                    <CustomField
+                        label={"מיקום:"}
+                        component={
+                            <AutoLocationSuggestions
+                                placeHolder={"city"}
+                                setCity={setCity}
+                                required={true}
+                                city={city}
+                                street={street}
+                                setStreet={setStreet}
+                                cityPlaceHolder={"לדוגמה:חיפה"}
+                                needStreet={true}
+                                streetLabel={language.form.fields.street}
+                                cityLabel={language.form.fields.city}
+
+                            />
+
+                        }
+                    />
+                    <CustomError error={cityError} />
+                    <CustomError error={streetError} />
+                    <CustomField
+                        label={language.form.fields.assetStatus}
+                        component={
+                            <CustomSelect
+                                name="status"
+                                defaultOption={props.assetStatus || language.form.fields.statusHolder}
+                                options={["new", "renovated", "needRenovated"]}
+                                optionsNames={language.realEstate.assetStatus.options}
+                                getOption={setAssetStatus}
+                                className={"customSelect-m mr-5 "}
+                            />
+                        }
+                    />
+                    <CustomError error={assetStatusError} />
+
+
+
+                    <CustomField
+                        label={language.form.fields.assetType}
+                        component={
+                            <CustomSelect
+                                name="asset"
+                                defaultOption={props.assetType || language.realEstate.assetType.defaultValue}
+                                options={data.realEstate.assetType.assets}
+                                optionsNames={language.realEstate.assetType.assets}
+                                getOption={setAssetType}
+                                disabled={true}
+                                className={"customSelect-m mr-5"}
+                            />
+                        }
+                    />
+                    <CustomError error={errorNoAssetType} />
+
+                    <CustomField
+                        label={language.form.fields.rooms}
+                        component={
+                            <CustomSelect
+                                name="rooms"
+                                defaultOption={props.rooms || language.realEstate.rooms.defaultValue}
+                                options={data.realEstate.rooms}
+                                optionsNames={language.realEstate.rooms.roomsNames}
+                                getOption={setRooms}
+                                className={"customSelect-m"}
+                            />
+                        }
+                    />
+
+                    <CustomError error={roomsError} />
+                </div>
+                <div className="flexResponsive">
+
+                    <CustomField
+                        label={"קומות*:"}
+                        component={
+                            <InputFromTo
+                                name="floors"
+                                fromLabel={language.form.fields.floor}
+                                toLabel={language.form.fields.floorsInBulding}
+                                fromPlaceHolder={language.form.fields.houseIsntInBulding}
+                                toPlaceHolder={language.form.fields.houseIsntInBulding}
+                                setFrom={setFloor}
+                                setTo={setFloorsInBuilding}
+                                fromValue={floor}
+                                toValue={floorsInBuilding}
+                                className="form-control"
+                                classNameFrom={"customInput-m"}
+                                classNameTo={"customInput-m mr-3"}
+
+                            />
+
+                        }
+                    />
+
+                    <CustomError error={floorError} />
+
+                    <CustomField
+                        label={language.form.fields.houseSize}
+                        component={
+                            <div>
+                                <input
+                                    type="number"
+                                    name="houseSize"
+                                    placeholder={language.form.fields.size}
+                                    min={0}
+                                    onChange={houseSizeHandler}
+                                    value={houseSize}
+                                    className="customInput-m mr-5"
                                 />
-                            }
-                        />
-                        <CustomError error={assetStatusError} />
-                    </div>
-                    <div className="ml-5">
-                        {/* chose the kind of asset */}
-                        <CustomField
-                            label={language.form.fields.assetType}
-                            component={
-                                <CustomSelect
-                                    name="asset"
-                                    defaultOption={props.assetType || language.realEstate.assetType.defaultValue}
-                                    options={data.realEstate.assetType.assets}
-                                    optionsNames={language.realEstate.assetType.assets}
-                                    getOption={setAssetType}
-                                    disabled={true}
+                            </div>
+                        }
+                    />
+                    <CustomError error={houseSizeError} />
+                    <CustomField
+                        label={language.realEstate.gradenSize}
+                        component={
+                            <div>
+                                <input
+                                    type="number"
+                                    name={"gardenSize"}
+                                    placeholder={language.form.fields.size}
+                                    min={0}
+                                    onChange={gardenSizeHandler}
+                                    value={gardenSize === 0 ? "" : gardenSize}
+                                    className="customInput-m  mr-5"
                                 />
-                            }
-                        />
-                        <CustomError error={errorNoAssetType} />
-                    </div>
-                </div>
+                            </div>
+                        }
+                    />
 
-                <AutoLocationSuggestions
-                    placeHolder={"city"}
-                    setCity={setCity}
-                    required={true}
-                    city={city}
-                    street={street}
-                    setStreet={setStreet}
-                    needStreet={true}
-                    streetLabel={language.form.fields.street}
-                    cityLabel={language.form.fields.city}
+                    <CustomField
+                        label={language.realEstate.price.label}
+                        component={
+                            <div>
+                                <input
+                                    type="number"
+                                    name="price"
+                                    placeholder={language.form.fields.priceHolder}
+                                    min={100000}
+                                    onChange={priceHandler}
+                                    value={price === 0 ? "" : price}
+                                    className="customInput-l"
+                                />
+                            </div>
 
-                />
-
-                <CustomError error={cityError} />
-                <CustomError error={streetError} />
-
-                <InputFromTo
-                    name="floors"
-                    fromLabel={language.form.fields.floor}
-                    toLabel={language.form.fields.floorsInBulding}
-                    fromPlaceHolder={language.form.fields.houseIsntInBulding}
-                    toPlaceHolder={language.form.fields.houseIsntInBulding}
-                    setFrom={setFloor}
-                    setTo={setFloorsInBuilding}
-                    fromValue={floor}
-                    toValue={floorsInBuilding}
-                    className="form-control"
-                />
-                <CustomError error={floorError} />
-
-
-                <div className="flexResponsive">
-                    <div className="ml-5">
-                        <h4>{language.realEstate.apartmentProperties.label}</h4>
-                        <CheckBoxList
-                            options={data.realEstate.apartmentProperties}
-                            optionsNames={language.realEstate.apartmentProperties.properties}
-                            getValue={setApartmentProperties}
-                            values={apartmentProperties}
-                        />
-
-                    </div>
-                    <div>
-                        <CustomField
-                            label={language.form.fields.description}
-                            component={<div><textarea onChange={descriptionHandler} value={description} /></div>}
-                        />
-                    </div>
-
-                </div>
-                <div className="flexResponsive">
-                    <div className="flexResponsive mr-5">
-                        <div className="mr-5">
-                            <CustomField
-                                label={language.form.fields.houseSize}
-                                component={
-                                    <div>
-                                        <input
-                                            type="number"
-                                            name="houseSize"
-                                            placeholder={language.form.fields.size}
-                                            min={0}
-                                            onChange={houseSizeHandler}
-                                            value={houseSize}
-                                        />
-                                    </div>
-                                }
-                            />
-                            <CustomError error={houseSizeError} />
-
-                        </div>
-                        <div>
-                            <CustomField
-                                label={language.realEstate.gradenSize}
-                                component={
-                                    <div>
-                                        <input
-                                            type="number"
-                                            name={"gardenSize"}
-                                            placeholder={language.form.fields.size}
-                                            min={0}
-                                            onChange={gardenSizeHandler}
-                                            value={gardenSize === 0 ? "" : gardenSize}
-                                        />
-                                    </div>
-                                }
-                            />
-                        </div>
-                    </div>
-                    <div className="flexResponsive">
-                        <div className="mr-5">
-                            <CustomField
-                                label={language.realEstate.price.label}
-                                component={
-                                    <div>
-                                        <input
-                                            type="number"
-                                            name="price"
-                                            placeholder={language.form.fields.priceHolder}
-                                            min={100000}
-                                            onChange={priceHandler}
-                                            value={price === 0 ? "" : price}
-                                        />
-                                    </div>
-
-                                }
-                            />
-                            <CustomError error={priceError} />
-
-                        </div>
-                        <div>
-                            <CustomField
-                                label={language.form.fields.rooms}
-                                component={
-                                    <CustomSelect
-                                        name="rooms"
-                                        defaultOption={props.rooms || language.realEstate.rooms.defaultValue}
-                                        options={data.realEstate.rooms}
-                                        optionsNames={language.realEstate.rooms.roomsNames}
-                                        getOption={setRooms}
-                                    />
-                                }
-                            />
-
-                            <CustomError error={roomsError} />
-                        </div>
-                    </div>
+                        }
+                    />
+                    <CustomError error={priceError} />
 
                 </div>
 
-                <DatePicker
-                    label={language.form.fields.datePicker}
-                    placeHolder={language.realEstate.dayOfEnter.placeHolder}
-                    todayCheckBoxTitle={language.realEstate.ImmediateEntrance}
-                    getDate={setDate}
-                    date={date}
-                    required={true}
-                />
-                <div className="flexResponsive">
-                    <div>
-                        <h4>{language.form.fields.img1}</h4>
-                        <FileHandler
-                            file={image1}
-                            setImage={setImage1}
-                        />
-                    </div>
-                    <div>
-                        <h4>{language.form.fields.img2}</h4>
-                        <FileHandler
-                            file={image2}
-                            setImage={setImage2}
-                        />
+            </div>
 
-                    </div>
-                    <div>
-                        <h4>{language.form.fields.img3}</h4>
-                        <FileHandler
-                            file={image3}
-                            setImage={setImage3}
-                        />
-                    </div>
 
+
+
+            <h4>{language.realEstate.apartmentProperties.label}</h4>
+            <CheckBoxList
+                options={data.realEstate.apartmentProperties}
+                optionsNames={language.realEstate.apartmentProperties.properties}
+                getValue={setApartmentProperties}
+                values={apartmentProperties}
+            />
+
+
+
+            <CustomField
+                label={language.form.fields.description}
+                component={<div><textarea onChange={descriptionHandler} value={description} className="textArea" /></div>}
+            />
+
+            <div className="flexResponsive">
+                <div>
+                    <h4>{language.form.fields.img1}</h4>
+                    <FileHandler
+                        file={image1}
+                        setImage={setImage1}
+                    />
                 </div>
                 <div>
-                    <h4>{language.form.fields.contact}</h4>
-                    <CustomContactDetails
-                        number={phoneNumber}
-                        contact={contact}
-                        setPhoneNumber={setPhoneNumber}
-                        setContact={setContact}
+                    <h4>{language.form.fields.img2}</h4>
+                    <FileHandler
+                        file={image2}
+                        setImage={setImage2}
                     />
 
                 </div>
-
-                <CustomError error={phoneNumberError} />
-                <CustomError error={contactError} />
-
-                <button className="btn btn-primary mb-2">{language.form.submit}</button>
+                <div>
+                    <h4>{language.form.fields.img3}</h4>
+                    <FileHandler
+                        file={image3}
+                        setImage={setImage3}
+                    />
+                </div>
 
             </div>
+
+            <DatePicker
+                label={"תאריך כניסה*"}
+                placeHolder={language.realEstate.dayOfEnter.placeHolder}
+                todayCheckBoxTitle={language.realEstate.ImmediateEntrance}
+                getDate={setDate}
+                date={date}
+                required={true}
+            />
+
+            <h4>{language.form.fields.contact}</h4>
+            <CustomContactDetails
+                number={phoneNumber}
+                contact={contact}
+                setPhoneNumber={setPhoneNumber}
+                setContact={setContact}
+            />
+
+
+
+            <CustomError error={phoneNumberError} />
+            <CustomError error={contactError} />
+
+            <button className="btn btn-primary mb-2">{language.form.submit}</button>
+
+
 
         </form>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import language from '../language/hebrew.json'
 import { connect } from 'react-redux';
 import { startLogOut } from '../actions/auth';
@@ -19,19 +19,21 @@ const Header = (props) => {
     }
 
     return (
+        <div className="orangeTopBorder">
+            <header className="navbar navbar-light whiteBackground greyBottomBorder pb-0 pt-0"  >
+                <div className="d-flex flex-row align-items-center">
+                    <NavLink to='/' className="navbar-brand" exact={true}><img className="imageIcon" src="https://dev-assets.yad2.co.il/yad2site/y2assets/images/header/yad2Logo.png" /></NavLink>
+                    <NavLink to='/realEstate/sale' activeClassName="activeLinkBold" className="navbar-brand">{language.header.realEstatePage}</NavLink>
+                    <NavLink to='/newAd' activeClassName="activeLinkBold" className="navbar-brand">{language.header.newAdPage}</NavLink>
+                    <NavLink to="/mySpace" activeClassName="activeLinkBold" className="navbar-brand">{language.header.personalSpace}</NavLink>
+                </div>
+                <div>
+                    {props.isAuth && <button onClick={logOutHandler} className="navbar-toggler">{language.header.logout}</button>}
+                </div>
+            </header>
+        </div>
 
-        <header className="navbar navbar-light" style={{ background: 'linear-gradient(0deg, rgba(239,250,255,1) 0%, rgba(255,71,71,1) 100%)' }} >
-            <div>
-                <Link to='/' className="navbar-brand">{language.homePage}</Link>
-                <Link to='/realEstate/sale' className="navbar-brand">{language.header.realEstatePage}</Link>
-                <Link to='/newAd' className="navbar-brand">{language.header.newAdPage}</Link>
-                <Link to="/mySpace" className="navbar-brand">{language.header.personalSpace}</Link>
-            </div>
-            <div>
-                {props.isAuth && <button onClick={logOutHandler} className="navbar-toggler">{language.header.logout}</button>}
-            </div>
 
-        </header>
     );
 }
 const mapStateToProps = (state) => ({

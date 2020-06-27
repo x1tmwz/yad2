@@ -7,41 +7,69 @@ const CheckBoxList = (props) => {
         if (box) {
             const boxArray = Array.from(box.childNodes);
             const checkOptions = [];
-            boxArray.forEach(label => {
-                if (label.firstChild.checked) {
-                    return checkOptions.push(label.firstChild.value)
-                }
-                return label;
-            })
+            for (let i = 0; i < boxArray.length; i++) {
+                const rowArray = Array.from(boxArray[i].childNodes);
+                rowArray.forEach(label => {
+                    if (label.firstChild.checked) {
+                        return checkOptions.push(label.firstChild.value)
+                    }
+                    return label;
+                })
+            }
             if (props.getValue) {
                 props.getValue(checkOptions);
             }
         }
     }
-    const setValues =()=>{
+    const setValues = () => {
         const box = document.getElementById("checkBox");
         if (box && props.values) {
             const boxArray = Array.from(box.childNodes);
-            boxArray.forEach(label => {
-                if (props.values.includes(label.lastChild.value)) {
-                    label.lastChild.checked = true;
-                }
-            })
+            for (let i = 0; i < boxArray.length; i++) {
+                const rowArray = Array.from(boxArray[i].childNodes);
+                rowArray.forEach(label => {
+                    if (props.values.includes(label.lastChild.value)) {
+                        label.lastChild.checked = true;
+                    }
+                })
+            }
         }
     }
-    useEffect(setValues,[props.values])
-   
-    return (
-        <div onChange={changeHandler} id="checkBox" className="d-flex flex-column">
-            {props.options.map((option, index) => {
-                return (
-                    <label key={index}>
-                        <input type="checkbox" value={option} name={option} key={index}/>
-                        {props.optionsNames[index]}
+    useEffect(setValues, [props.values])
+    const createMatrixFromOptions = (itemInRow = 5) => {
+        const matrix = [];
+        for (let i = 0; i < props.options.length; i++) {
+            const row = [];
+            for (let j = 0; j < itemInRow; j++) {
+                const option = props.options[i]
+                row.push(
+                    <label key={i} className={"mr-5"}>
+                        <input type="checkbox" value={option} name={option} key={i} className={"mr-1"}/>
+                        {props.optionsNames[i]}
                     </label>
                 )
+                i++;
+            }
+            matrix.push(row);
+        }
+        return matrix;
+    }
+
+
+
+    return (
+        <div onChange={changeHandler} id="checkBox" className="d-flex flex-column">
+
+            {createMatrixFromOptions().map((row, index) => {
+                return (
+                    <div className="flexResponsive" key={index}>
+                        {row}
+                    </div>
+                );
+
 
             })}
+
         </div>
     );
 }

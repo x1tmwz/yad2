@@ -3,22 +3,6 @@ import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 
 
-
-// export const PrivateRoute = ({
-//     isAuth,
-//     component: Component,
-//     ...rest
-// }) => (<Route {...rest} component={(props) => (
-//     isAuth ? (
-//         <div>
-//             <Component {...props} />
-//         </div>
-
-//     ) : (
-//             <Redirect to="/login" />
-//         )
-
-// )} />);
 export const PrivateRoute = ({
     isAuth,
     component: Component,

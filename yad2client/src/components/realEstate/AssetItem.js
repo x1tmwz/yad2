@@ -39,21 +39,14 @@ const AssetItem = ({
         setOpen(!isOpen);
     }
     return (
-
-
-
-        <div
-            className="d-flex flex-column border border-dark pr-1 pl-1 pb-1 pt-1 w-100"
-            style={{ background: 'linear-gradient(0deg, rgba(239,250,255,1) 0%, rgba(255,71,71,1) 100%)' }}
-        >
-            <div onClick={openAdHanlder} className="flexResponsive justify-content-between align-items-center">
+        <div className="adContainer">
+            <div onClick={openAdHanlder} className="flexResponsive adTitlesContainer greyBorder">
                 <ImageViewer
                     images={imageArray([image1, image2, image3])}
                 />
                 <CustomTitle
                     title={`${city},${street}`}
                     label={transleValues(assetType, data.realEstate.assetType.assets, language.realEstate.assetType.assets)}
-
                 />
                 <CustomTitle
                     title={houseSize + gardenSize}
@@ -74,25 +67,32 @@ const AssetItem = ({
 
             </div>
             {isOpen && (
-                <div className="d-flex flex-column">
-                    <div className="flexResponsive justify-content-between">
-                        <div>
-                            <p><span>{language.ad.enterDay}</span>{`${new moment(date).format("DD-MM-YYYY")}`}</p>
-                            <p><span>{language.ad.houseStatus}</span>{transleValues(assetStatus, data.realEstate.assetStatus, language.realEstate.assetStatus.options)}</p>
-                            {!!gardenSize && <p><span>{language.ad.gardenSize}</span>{gardenSize}</p>}
-                            <p><span>{language.ad.houseSize}</span>{houseSize}</p>
-                            {!!floorsInBuilding && <p><span>{language.ad.floorsInBulding}</span>{floorsInBuilding}</p>}
-                        </div>
-                        <div className="d-flex flex-column w-75 h-25" >
-                            <h6>{language.ad.description}</h6>
-                            <p style={{ wordBreak: "break-all" }}>{description}</p>
-                        </div>
+                <div className="flexResponsive adInfoContainer">
+                    <div className="ad-comrcialAd">
+                        Ad
                     </div>
-                    <div className="flexResponsive justify-content-between">
+                    <div>
+                        <div>
+                            <h6>{language.ad.description}</h6>
+                            <p style={{ wordBreak: "break-all" }}>{description ? description:"אין תיאור לנכס זה."}</p>
+                        </div>
+                        <div className="flexResponsive adInfoContainer-description">
+                            <div>
+                                <p><span>{language.ad.enterDay}</span>{`${new moment(date).format("DD-MM-YYYY")}`}</p>
+                                <p><span>{language.ad.houseStatus}</span>{transleValues(assetStatus, data.realEstate.assetStatus, language.realEstate.assetStatus.options)}</p>
+                                <p><span>{language.ad.houseSize}</span>{houseSize}</p>
+                            </div>
+                            <div>
+                                {!!gardenSize && <p><span>{language.ad.gardenSize}</span>{gardenSize}</p>}
+                                {!!floorsInBuilding && <p><span>{language.ad.floorsInBulding}</span>{floorsInBuilding}</p>}
+                            </div>
+                        </div>
+
+
                         {apartmentProperties.length > 0 && (
-                            <div className="mb-5">
+                            <div>
                                 <h5>{language.ad.apartmentProperties}</h5>
-                                <div>
+                                <div className="flexResponsive">
                                     {apartmentProperties.map((prop) =>
                                         <span key={prop} className="mr-1 ml-1">{transleValues(prop, data.realEstate.apartmentProperties, language.realEstate.apartmentProperties.properties)}</span>)}
                                 </div>
@@ -102,15 +102,19 @@ const AssetItem = ({
                         <DropDown
                             label=""
                             buttonPlaceHolder={language.ad.contact}
+                            buttonClassName="btn btn-success adContactButton"
                             component={
-                                <div>
-                                    <h3>{contact}</h3>
-                                    <h3>{phoneNumber}</h3>
+                                <div className="adContactInfo">
+                                    <h3 className=" adContactInfo-item greyBorder">{contact}</h3>
+                                    <h3 className="adContactInfo-item greyBorder ">{phoneNumber}</h3>
                                 </div>
                             }
 
                         />
+
                     </div>
+
+
                 </div>
             )}
         </div>
